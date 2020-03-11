@@ -54,6 +54,14 @@ public class CustomerDAOJdbclmpl extends DAO<Customer> implements CustomerDAO{
 		return getForValue(sql,name);
 	}
 
+	@Override
+	public void update(Customer customer) {
+		String sql = "UPDATE customers SET name = ? ,address = ?,phone = ? WHERE id = ?";
+		
+		update(sql, customer.getName(),customer.getAddress(),customer.getPhone(),customer.getId()); 
+		
+	}
+
 	
 	
 	

@@ -87,6 +87,42 @@ public class CustomerServlet extends HttpServlet {
 		request.getRequestDispatcher(forwardPath).forward(request, response);
 	}
 	
+	private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		//1.获取请求参数 ： id ， name， address，phone，oldName
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		
+		System.out.print(name);
+		System.out.print("333");
+		String phone = request.getParameter("phone");
+		String address = request.getParameter("address");
+		String oldName = request.getParameter("oldName");
+
+		if(oldName.equals(name)) {
+			long count = customerDAO.getCountWithName(name);
+			
+			if(count > 0) {
+				
+				request.setAttribute("message", "用户名"+name+"已经被占用！");
+				
+				request.getRequestDispatcher("/updatecustomer.jsp").forward(request, response);
+				return;
+			}
+			
+		}
+		
+			Customer customer = new Customer();
+			
+			customer.setId(Integer.parseInt(id));
+		
+			
+		customerDAO.update(customer);
+		
+		response.sendRedirect("query.do");
+		//4.响应updatecustomer。jsp 页面：转发
+	}
+	
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idStr = request.getParameter("id");
 		int id = 0;

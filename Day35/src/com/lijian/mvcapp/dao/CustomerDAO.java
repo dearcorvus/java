@@ -16,6 +16,8 @@ public interface CustomerDAO {
 	
 	public void delete(Integer id);
 	
+	public void update(Customer customer);
+	
 	public long getCountWithName(String name);
 
 	
