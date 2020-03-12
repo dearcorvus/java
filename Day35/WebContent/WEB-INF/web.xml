@@ -18,5 +18,12 @@
   <servlet-mapping>
   	<servlet-name>CustomerServlet</servlet-name>
   	<url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> 
+  <servlet>
+  	<description></description>
+  	<display-name>InitServlet</display-name>
+  	<servlet-name>InitServlet</servlet-name>
+  	<servlet-class>com.lijian.mvcapp.servlet.InitServlet</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
 </web-app>

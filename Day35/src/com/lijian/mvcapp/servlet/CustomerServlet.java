@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lijian.mvcapp.dao.CriteriaCustomer;
 import com.lijian.mvcapp.dao.CustomerDAO;
+import com.lijian.mvcapp.dao.factory.CustomerDAOFactory;
 import com.lijian.mvcapp.dao.impl.CustomerDAOXMLImpl;
 import com.lijian.mvcapp.domain.Customer;
 
@@ -24,7 +25,8 @@ public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 //	private CustomerDAO customerDAO = new CustomerDAOJdbclmpl();
-	private CustomerDAO customerDAO = new CustomerDAOXMLImpl();
+//	private CustomerDAO customerDAO = new CustomerDAOXMLImpl();
+	private CustomerDAO customerDAO = CustomerDAOFactory.getInstance().getCustomerDAO();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
