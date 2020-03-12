@@ -93,13 +93,15 @@ public class CustomerServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
 		
-		System.out.print(name);
-		System.out.print("333");
+
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String oldName = request.getParameter("oldName");
 
-		if(oldName.equals(name)) {
+
+//		if(!oldName.equals(name)) {
+		if(!oldName.equalsIgnoreCase(name)) {
+			
 			long count = customerDAO.getCountWithName(name);
 			
 			if(count > 0) {
@@ -112,9 +114,9 @@ public class CustomerServlet extends HttpServlet {
 			
 		}
 		
-			Customer customer = new Customer();
+		Customer customer = new Customer(name, address, phone);
 			
-			customer.setId(Integer.parseInt(id));
+		customer.setId(Integer.parseInt(id));
 		
 			
 		customerDAO.update(customer);
