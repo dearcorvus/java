@@ -92,8 +92,6 @@ public class CustomerServlet extends HttpServlet {
 		//1.获取请求参数 ： id ， name， address，phone，oldName
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
-		
-
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String oldName = request.getParameter("oldName");
