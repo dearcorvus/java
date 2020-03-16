@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="setcookie.jsp" method = "post">	
+	<form action="setcookie.jsp" method = "get">	
 		<input name="name">
 		<input type="submit">
 	</form>
