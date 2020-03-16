@@ -43,7 +43,7 @@
 			out.print("Hello:" + name);
 		}else{
 			//若没有参数,也没有cookie返回login.jsp
-			response.sendRedirect("login.jsp");
+			//response.sendRedirect("login.jsp");
 		}
 	
 	%>
