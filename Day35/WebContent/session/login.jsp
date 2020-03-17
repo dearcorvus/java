@@ -23,7 +23,6 @@
 		if(username == null){
 			username = "";
 		}
-	
 	%>
 	<form action="<%=response.encodeURL("hello.jsp") %>" method="post">
 	
