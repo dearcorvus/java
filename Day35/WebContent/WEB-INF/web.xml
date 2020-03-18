@@ -26,4 +26,5 @@
   	<servlet-class>com.lijian.mvcapp.servlet.InitServlet</servlet-class>
   	<load-on-startup>1</load-on-startup>
   </servlet>
+ 
 </web-app>

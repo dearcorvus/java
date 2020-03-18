@@ -21,7 +21,7 @@
 	<%
 	
 		session.setAttribute("username", request.getParameter("username"));
-	
+
 	%>
 	<br>
 	<a href="<%=response.encodeURL("login.jsp") %>">重新登录</a>
