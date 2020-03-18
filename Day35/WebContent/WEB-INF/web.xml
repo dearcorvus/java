@@ -26,5 +26,14 @@
   	<servlet-class>com.lijian.mvcapp.servlet.InitServlet</servlet-class>
   	<load-on-startup>1</load-on-startup>
   </servlet>
- 
+  <servlet>
+  	<servlet-name>ProcessStep1Servlet</servlet-name>
+  	<servlet-class>com.atguigu.javaweb.ProcessStep1Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProcessStep1Servlet</servlet-name>
+  	<url-pattern>/processStep1</url-pattern>
+  </servlet-mapping>  
+  
+   
 </web-app>
