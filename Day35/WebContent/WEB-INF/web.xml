@@ -35,5 +35,14 @@
   	<url-pattern>/processStep1</url-pattern>
   </servlet-mapping>  
   
+  <servlet>
+  	<servlet-name>TokenServlet</servlet-name>
+  	<servlet-class>com.atguigu.javaweb.TokenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TokenServlet</servlet-name>
+  	<url-pattern>/tokenServlet</url-pattern>
+  </servlet-mapping> 
+   
    
 </web-app>
