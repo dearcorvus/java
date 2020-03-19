@@ -23,6 +23,6 @@
 	<jsp:setProperty property="address" value="12" name="customer" ></jsp:setProperty>
 	age : <jsp:getProperty property="address" name="customer"/>
 	<a href="<%= request.getContextPath()%>/el/el2.jsp">el2</a>
-	<a href="el2.jsp?score=123">el2</a>
+	<a href="el2.jsp?score=123&name=A&name=B&name=C">el2</a>
 </body>
 </html>
