@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h4>Step2:请输入寄送地址和信用卡信息</h4>
-<<<<<<< HEAD
+
 	<form action="<%=request.getContextPath() %>/processStep2" method="post" >
 	<table cellpadding = "10" cellspacing="0" border="1" >
 		<tr>
@@ -41,7 +41,6 @@
 		</tr>		
 	</table>
 	</form>
-=======
->>>>>>> branch 'master' of https://github.com/dearcorvus/java.git
+
 </body>
 </html>
