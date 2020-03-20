@@ -9,6 +9,10 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+  	<param-name>init</param-name>
+	<param-value>123</param-value>
+  </context-param>
   <servlet>
   	<description></description>
   	<display-name>CustomerServlet</display-name>
