@@ -9,6 +9,10 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <context-param>
+  	<param-name>init</param-name>
+	<param-value>123</param-value>
+  </context-param>
   <servlet>
   	<description></description>
   	<display-name>CustomerServlet</display-name>
@@ -27,6 +31,7 @@
   	<load-on-startup>1</load-on-startup>
   </servlet>
   <servlet>
+<<<<<<< HEAD
   <description></description>
   	<display-name>ProcessStep1Servlet</display-name>
   	<servlet-name>ProcessStep1Servlet</servlet-name>
@@ -58,4 +63,24 @@
   </servlet-mapping> 
   
   
+=======
+  	<servlet-name>ProcessStep1Servlet</servlet-name>
+  	<servlet-class>com.atguigu.javaweb.ProcessStep1Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ProcessStep1Servlet</servlet-name>
+  	<url-pattern>/processStep1</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+  	<servlet-name>TokenServlet</servlet-name>
+  	<servlet-class>com.atguigu.javaweb.TokenServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>TokenServlet</servlet-name>
+  	<url-pattern>/tokenServlet</url-pattern>
+  </servlet-mapping> 
+   
+   
+>>>>>>> branch 'master' of https://github.com/dearcorvus/java.git
 </web-app>
