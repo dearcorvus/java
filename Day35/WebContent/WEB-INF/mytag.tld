@@ -14,6 +14,38 @@
     <!-- 作为tld文件的ID ，用来唯一表示当前的TLD文件，多个tld 文件的URI 不能重复。通过JSP页面的taglib表签uri属性来应用-->
     <uri>http://www.atguigu.com/mytag/core</uri>
     
+    <tag>
+    	<name>readerFile</name>
+    	<tag-class>com.atguigu.javaweb.tag.ReadFuleTag</tag-class>
+    	<body-content>empty</body-content>
+     	<attribute>
+    		<name>src</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>   	
+    </tag>
+    
+    
+    <tag>
+    	<name>max</name>
+    	<tag-class>com.atguigu.javaweb.tag.MaxTag</tag-class>
+    	<body-content>empty</body-content>
+    	
+    	<attribute>
+    		<name>num1</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>num2</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
+    
+    
+    
     
     <!-- 描述自定义的HelloSimpleTag标签 -->
     <tag>
@@ -23,5 +55,22 @@
     	<tag-class>com.atguigu.javaweb.tag.HelloSimpleTag</tag-class>
     	<!-- 标签体的类型 -->
     	<body-content>empty</body-content>
+    	
+    	
+    	<!-- 描述当前标签的属性 -->
+    	<attribute>
+    		<!-- 属性名 -->
+    		<name>value</name>
+    		<!-- 该属性是否被必须 -->
+    		<required>true</required>
+    		<!-- rtexprvalue: runtime expression value 当前属性是否可以接受运行时表达式的动态值 -->
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>count</name>
+    		<required>false</required>
+    		<rtexprvalue>false</rtexprvalue>
+    	</attribute>
     </tag>
 </taglib>

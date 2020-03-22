@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<atguigu:hello/>
+	<atguigu:readerFile src="/WEB-INF/note.txt"/>	
+<br>
+	<atguigu:max num2="${param.a }" num1="${param.b }"/>
+	<br>
+	<atguigu:hello value="${param.name }" count="10"/>
 </body>
 </html>

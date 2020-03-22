@@ -1,0 +1,77 @@
+1.带标签体的自定义标签
+
+1》若一个标签有标签体：
+<atguigu:testJspFragment>HelloWorld</atguigu:testJspFragment>
+
+在自定义标签处理器中使用JspFragment对象封装标签体信息
+2》若配置标签韩有标签体，则JSP引擎会调用setJspBody()方法 把 JspFragment 传递给标签处理器类 
+
+在SimpleTagSupport 中还定义了一个getJspBody() 方法，用于返回JspFragment 对象
+
+3》JspFragment 的invoke(Writer)方法：把标签体内容重Writer中输出，若为null，则等同于invoke(getJspContext().getOut()),及直接把标签体内容输出到页面上
+
+有时可以借助StringWriter，先得到标签体的内容
+
+//1.使用StringWriter得到标签体的内容
+StringWriter sw = new StringWriter();
+bodyContent.invoke(sw);
+//2.把标签体的内容都变成大写
+String content = sw.toString().toUpperCase();
+//3.获取页面上隐含的out隐含对象输出到页面上
+//System.out.println(sw.toString());
+getJspContext().getOut().print(content);
+
+4》在tld文件中，使用body-content节点来描述标签体的类型：
+<body-content>:指定标签体的类型。可能取值的三种 大部分情况下取值scriptless
+empty:没有标签体
+scriptless:标签体可以包含el表达式和JSP动作元素，但不可以包含JSP的脚本元素
+tagdependent:标签体交由本身解析处理。指定tagdependent，在标签体中的所有代码都会原封不动的交由标签体处理，而不是执行结果较有标签体处理
+
+<body-content>scriptless</body-content>	
+
+5>定义一个自定义标签：
+	<atguigu:printUpper time="10">asdf</atguigu>
+	把标签体内容转化为大写并输出time次到浏览器
+	
+6>实现foreach标签：
+	》两个属性：items(集合类型，Colllection),var(String 类型)
+	》doTag:
+		*遍历items对应的集合，
+		*把正在遍历的对象放入pageContext中，键：var,值;正在遍历的对象
+		*把标签体的内容直接输出到页面上
+		
+	<c:forEach items="${requestScope.customers }" var="cust">
+		${pageScope.cust.id }--${cust.name }--<br>
+	</c:forEach>
+	
+	
+2.开发有父标签的标签：	
+	
+	父标签无法获取子标签的引用，父标签仅把子标签作为标签体来使用
+	
+	子标签可以通过getParent()方法来获取父标签的引用(需继承 SimplieTagSupport 或自实现SimplieTag接口的该方法)
+	
+	若子标签的确有父标签，JSP引擎会把代表父标签的引用通过 setParent(JspTag parent)赋给标签处理器  。该标签是一个空接口 但是来统一SimpleTag 和 Tag的。实际使用需要类型的强制转换
+	
+	在tld配置文件中，无需为父标签用额外的配置。但子标签是以标签体的形式存在的，所以父标签的<body-content></body-content>需要设置为scriptless
+
+	注意：父标签的类型是JspTag类型
+	
+	实现：
+	
+	<c:choose>
+		<c:when test="${param.age > 24}">大学毕业</c:when>
+		<c:when test="${param.age > 20}">高中毕业</c:when>
+		<c:otherwise>高中以下。。。</c:otherwise>
+	</c:choose>
+	
+	开发标签3个：choose,when,otherwise
+	其中when标签有一个boolean类型的属性：test
+	choose是when 和 otherwise的标签的父标签， when 在otherwise 之前使用
+	
+	在父标签choose中定义一个“全局” 的boolean类型的flag：用于判断子标签在满足条件下是否执行
+	
+		*若when的test为true，且when的父标签的flag也为true，则执行when的标签体(正常输出标签体的内容)，
+		    同时把flag设置为false
+		*若when的test为true，且when的父标签的flag也为false，则不执行标签体
+		*若flag为true，otherwise执行标签体

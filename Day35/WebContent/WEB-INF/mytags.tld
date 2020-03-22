@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <!-- 描述TLD文件 -->
+    <description>MyTags 1.0 core library</description>
+    <display-name>MyTags core</display-name>
+    <tlib-version>1.0</tlib-version>
+    
+        <!-- 建议在JSP页面上使用的标签的前缀 -->
+    <short-name>atlijian</short-name>
+    <!-- 作为tld文件的ID ，用来唯一表示当前的TLD文件，多个tld 文件的URI 不能重复。通过JSP页面的taglib表签uri属性来应用-->
+    <uri>http://www.atguigu.com/mytags/core</uri>
+    
+    <tag>
+    	<name>testJspFragment</name>
+    	<tag-class>com.atlijian.javaweb.TestJspFragment</tag-class>
+    	<body-content>scriptless</body-content>	
+    </tag>
+    
+    <tag>
+    	<name>printUpper</name>
+    	<tag-class>com.atlijian.javaweb.PrintUpperTag</tag-class>
+    	<body-content>scriptless</body-content>
+    	
+    	<attribute>
+    		<name>time</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
+    
+    <tag>
+    	<name>forEach</name>
+    	<tag-class>com.atlijian.javaweb.ForEachTag</tag-class>
+    	<body-content>scriptless</body-content>
+    	
+    	<attribute>
+    		<name>items</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    	
+    	<attribute>
+    		<name>var</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
+    
+    <tag>
+    	<name>parentTag</name>
+    	<tag-class>com.atlijian.javaweb.ParentTag</tag-class>
+    	<body-content>scriptless</body-content>
+    </tag>
+    <tag>
+  		<name>sonTag</name>
+  		<tag-class>com.atlijian.javaweb.SonTag</tag-class>
+  		<body-content>empty</body-content>  
+    </tag>
+    
+    <tag>
+    	<name>choose</name>
+    	<tag-class>com.atlijian.javaweb.ChooseTag</tag-class>
+    	<body-content>scriptless</body-content>
+    </tag>
+    
+    <tag>
+    	<name>when</name>
+    	<tag-class>com.atlijian.javaweb.WhenTag</tag-class>
+    	<body-content>scriptless</body-content>
+    	
+    	<attribute>
+    		<name>test</name>
+    		<required>true</required>
+    		<rtexprvalue>true</rtexprvalue>
+    	</attribute>
+    </tag>
+    
+    <tag>
+    	<name>otherwise</name>
+    	<tag-class>com.atlijian.javaweb.OtherwiseTag</tag-class>
+    	<body-content>scriptless</body-content>
+    </tag>
+</taglib>
