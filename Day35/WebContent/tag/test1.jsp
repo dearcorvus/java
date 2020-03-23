@@ -7,6 +7,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="atguigu" uri="http://www.atguigu.com/mytags/core" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fu" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,6 +80,18 @@
 		<atguigu:when test="${param.age > 20}">高中毕业</atguigu:when>
 		<atguigu:otherwise>高中以下。。。</atguigu:otherwise>
 	</atguigu:choose>
+
+	<br>
+	<!-- EL自定义函数 -->
+	${fu:length(param.name) }	
+
+	<br>
+	<br>
+	
+	<!-- 测试自定义的EL函数 -->
+	
+	${atguigu:concat(param.name1,param.name2)}
 	
 </body>
+
 </html>
