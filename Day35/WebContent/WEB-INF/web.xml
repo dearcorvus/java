@@ -71,5 +71,20 @@
   	<url-pattern>/tokenServlet</url-pattern>
   </servlet-mapping> 
    
+  <!-- 注册filter -->
+  <filter>
+  	<filter-name>helloFilter</filter-name>
+  	<filter-class>com.atlijian.javaweb.filter.HelloFilter</filter-class>
+  	<init-param>
+  		<param-name>name</param-name>
+  		<param-value>root</param-value>
+  	</init-param>
+  </filter>
+  
+  <!-- 映射到Filter -->
+  <filter-mapping>
+  	<filter-name>helloFilter</filter-name>
+  	<url-pattern>/filter/test.jsp</url-pattern>
+  </filter-mapping>
   
 </web-app>
