@@ -41,5 +41,36 @@
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2):真正Filter的逻辑代码需要编写在该方法中,每次拦截都会调用该方法
 	
 	*FilterChain:Filter 链.多个Filter 可以构成一个Filter链
+	-doFilter(ServletRequest request,ServletResponse response):请求传给Filter链的下一个Filter，若当前Filter是最后一个Filter,将请求给到目标Servlet(或JSP)
+	
+	- 多个Filter拦截的顺序和<filter-mapping>配置的顺序有关，靠前的先被调用
 	
 	public void destroy()
+	释放当前Filter所占用的资源的方法。在Filter被销毁之前被调用，且只被调用一次
+	
+	
+4 <dispather>元素：指定过滤器多拦截的资源Servlet容器调用的方式，可以REQUEST,INCLUDE,FORWARD和SRROOR之一，默认REQUEST
+	可以设置多个<dispather>子元素来指定Filter对资源的多种调用方式进行拦截
+	1》当用户直接访问页面（通过GET,POST请求直接访问页面）如果目标资源是通过RequestDispather的include()或forward
+	2》RequestDispather的forward方法访问调用 或《jsp:forward page=""/> 或者通过page的errorpage转发页面<%@ page errorPage=""/>
+	3》RequestDispather的include方法访问时将会被调用《jsp:include file=""/>
+	4>error 目标资源通过声明异常处理机制调用时将会被调用
+	在web.xml文件中error-page节点进行声明：
+	
+	<error-page>
+		<exception-type></exception-type>
+		<location></location>
+	</error-page>
+	
+	<filter-mapping>
+	<dispathcher>REQUEST</dispatcher>
+	<dispathcher>FORWARD</dispatcher>
+	<dispathcher>INCLUDE</dispatcher>
+	<dispathcher>ERROR</dispatcher>
+	</filter-mapping>
+	
+	
+	禁用缓存
+	response。setDateHeader("Expires",-1);
+	response.setHeader("Cache-Control","no-cache");
+	response.setHeader("Pragma","no-cache");
