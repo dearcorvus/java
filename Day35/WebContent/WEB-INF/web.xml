@@ -137,4 +137,30 @@
   	<filter-name>encodingFilter</filter-name>
   	<url-pattern>/filter/*</url-pattern>
   </filter-mapping>
+  
+  <!-- 用户信息写道session中的键名下面 -->
+  <context-param>
+  	<param-name>userSessionKey</param-name>
+  	<param-value>USERSESSIONKEY</param-value>
+  </context-param>
+  
+  <!-- 若未登录需要重定向的页面 -->
+  <context-param>
+  	<param-name>rediretPage</param-name>
+  	<param-value>/login/user.jsp</param-value>
+  </context-param>
+  <!-- 不需要拦截的URL列表 -->
+  <context-param>
+  	<param-name>uncheckedUrls</param-name>
+  	<param-value>/login/login.jsp,/login/user.jsp,/login/d.jsp,/login/doLogin.jsp</param-value>
+  </context-param>
+  
+  <filter>
+  	<filter-name>loginFilter</filter-name>
+  	<filter-class>com.atlijian.javaweb.login.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>loginFilter</filter-name>
+  	<url-pattern>/login/*</url-pattern>
+  </filter-mapping>
 </web-app>
